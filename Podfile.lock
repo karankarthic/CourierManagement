@@ -1,0 +1,60 @@
+PODS:
+  - PhoneNumberKit (3.1.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.1.0)
+    - PhoneNumberKit/UIKit (= 3.1.0)
+  - PhoneNumberKit/PhoneNumberKitCore (3.1.0)
+  - PhoneNumberKit/UIKit (3.1.0):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
+  - ReachabilitySwift (4.3.0)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
+  - SQLite.Wrapper (0.0.20):
+    - PromisesSwift (~> 1.2.8)
+  - SwiftSoup (2.2.0)
+  - ZCCoreFramework (0.0.29):
+    - PhoneNumberKit (= 3.1)
+    - PromisesSwift (= 1.2.8)
+    - ReachabilitySwift (= 4.3.0)
+    - SQLite.swift (= 0.11.5)
+    - SQLite.Wrapper (= 0.0.20)
+    - SwiftSoup (= 2.2.0)
+    - ZMLKit (= 0.0.21)
+  - ZMLKit (0.0.21)
+  - ZohoAuth (1.3)
+
+DEPENDENCIES:
+  - ZCCoreFramework
+  - ZohoAuth
+
+SPEC REPOS:
+  trunk:
+    - PhoneNumberKit
+    - PromisesObjC
+    - PromisesSwift
+    - ReachabilitySwift
+    - SQLite.swift
+    - SQLite.Wrapper
+    - SwiftSoup
+    - ZCCoreFramework
+    - ZMLKit
+    - ZohoAuth
+
+SPEC CHECKSUMS:
+  PhoneNumberKit: adffe4e128af1918386e09e7421d3d851a2987af
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  SQLite.Wrapper: c4b3c2aae7014b660086e7f2aec0837c0c22f333
+  SwiftSoup: 230991361c5ba249d140161860a3864a28b63860
+  ZCCoreFramework: 88ad6b77e5b37d4930347e3c71577fe1afa79e84
+  ZMLKit: 88f2488dcb7f4e29f41abdaa7c7a2327701b491b
+  ZohoAuth: e197f454c4ee6d05d1e7396cf2a5a766ec6c4ab6
+
+PODFILE CHECKSUM: 79ed6850daed00ae76b24dd88b45967db6cf2ef0
+
+COCOAPODS: 1.9.1

@@ -7,47 +7,57 @@
 //
 
 import UIKit
+import ZCCoreFramework
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+ var window: UIWindow?
 
-    var window: UIWindow?
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+   if let windowScene = scene as? UIWindowScene {
+    let window = UIWindow(windowScene: windowScene)
+   }
 
+   // ZohoAuth Configuration
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+   let scope = ["ZohoCreator.meta.READ", "ZohoCreator.data.READ", "ZohoCreator.meta.CREATE", "ZohoCreator.data.CREATE", "aaaserver.profile.READ", "ZohoContacts.userphoto.READ", "ZohoContacts.contactapi.READ"]
+   let clientID = "<Your Client ID>"
+   let clientSecret = "<Your Client Secret>"
+   let urlScheme = "<Your Url Scheme>"
+   let accountsUrl = "https://accounts.zoho.com" // enter the accounts URL of your respective DC. For eg: EU users use 'https://accounts.zoho.eu'.
+   ZohoAuth.initWithClientID(clientID, clientSecret: clientSecret, scope: scope, urlScheme: urlScheme, mainWindow: window, accountsURL: accountsUrl)
+
+   // To verify if the app is already logged in
+
+   ZohoAuth.getOauth2Token {
+    (token, error) in
+    if token == nil {
+     // Not logged in
+     self.showLoginScreen()
+    } else {
+     // App logged in already.
+     // Ensure to use the following line of code in your iOS app before you utilize any of Creator SDK’s methods
+     Creator.configure(delegate: self)
     }
+   }
+  }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
-
-
+ func scene(_ scene: UIScene, openURLContexts URLContexts: Set <UIOpenURLContext> ) {
+  if let context = URLContexts.first {
+   let _ = ZohoAuth.handleURL(context.url,
+    sourceApplication: context.options.sourceApplication,
+    annotation: context.options.annotation)
+  }
+ }
 }
 
+extension SceneDelegate: ZCCoreFrameworkDelegate {
+  func oAuthToken(with completion: @escaping AccessTokenCompletion) {
+   ZohoAuth.getOauth2Token {
+    (token, error) in
+    completion(token, error)
+   }
+  }
+  func configuration() -> CreatorConfiguration {
+   return CreatorConfiguration(creatorURL: "https://creator.zoho.com") // enter the creator URL of your respective data center (DC). For eg: EU users must use https://creator.zoho.eu
+   }
+  }

@@ -1,0 +1,10 @@
+${PODS_ROOT}/Target Support Files/Pods-CourierManagement/Pods-CourierManagement-frameworks.sh
+${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework
+${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
+${PODS_ROOT}/SQLite.Wrapper/SQLiteWrapper.framework
+${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework
+${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework
+${PODS_ROOT}/ZCCoreFramework/ZCCoreFramework.framework
+${PODS_ROOT}/ZMLKit/ZMLKit.framework

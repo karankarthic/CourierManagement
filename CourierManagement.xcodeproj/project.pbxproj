@@ -13,6 +13,8 @@
 		976D6AEE251DBF55005B7ED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976D6AEC251DBF55005B7ED9 /* Main.storyboard */; };
 		976D6AF0251DBF56005B7ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 976D6AEF251DBF56005B7ED9 /* Assets.xcassets */; };
 		976D6AF3251DBF56005B7ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976D6AF1251DBF56005B7ED9 /* LaunchScreen.storyboard */; };
+		976D6AFE251DD9D2005B7ED9 /* ZCAppInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 976D6AFD251DD9D2005B7ED9 /* ZCAppInfo.plist */; };
+		AB1F71CD10DFE5113BA3F8A2 /* Pods_CourierManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E426D1DBC8F2A1DC7EA7324A /* Pods_CourierManagement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,11 @@
 		976D6AEF251DBF56005B7ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		976D6AF2251DBF56005B7ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		976D6AF4251DBF56005B7ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		976D6AFA251DD991005B7ED9 /* CourierManagement-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CourierManagement-Bridging-Header.h"; sourceTree = "<group>"; };
+		976D6AFD251DD9D2005B7ED9 /* ZCAppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZCAppInfo.plist; sourceTree = "<group>"; };
+		DF9757BC614081CC75FF6B16 /* Pods-CourierManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourierManagement.release.xcconfig"; path = "Target Support Files/Pods-CourierManagement/Pods-CourierManagement.release.xcconfig"; sourceTree = "<group>"; };
+		E426D1DBC8F2A1DC7EA7324A /* Pods_CourierManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourierManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AF3ECE46E7559AFED4B6C8 /* Pods-CourierManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourierManagement.debug.xcconfig"; path = "Target Support Files/Pods-CourierManagement/Pods-CourierManagement.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1F71CD10DFE5113BA3F8A2 /* Pods_CourierManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +50,8 @@
 			children = (
 				976D6AE5251DBF55005B7ED9 /* CourierManagement */,
 				976D6AE4251DBF55005B7ED9 /* Products */,
+				E79BE2A0735E469C101BAAB8 /* Pods */,
+				C36EC5BA9C64E5BEC29D1D3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +72,29 @@
 				976D6AEC251DBF55005B7ED9 /* Main.storyboard */,
 				976D6AEF251DBF56005B7ED9 /* Assets.xcassets */,
 				976D6AF1251DBF56005B7ED9 /* LaunchScreen.storyboard */,
+				976D6AFD251DD9D2005B7ED9 /* ZCAppInfo.plist */,
 				976D6AF4251DBF56005B7ED9 /* Info.plist */,
+				976D6AFA251DD991005B7ED9 /* CourierManagement-Bridging-Header.h */,
 			);
 			path = CourierManagement;
+			sourceTree = "<group>";
+		};
+		C36EC5BA9C64E5BEC29D1D3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E426D1DBC8F2A1DC7EA7324A /* Pods_CourierManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E79BE2A0735E469C101BAAB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0AF3ECE46E7559AFED4B6C8 /* Pods-CourierManagement.debug.xcconfig */,
+				DF9757BC614081CC75FF6B16 /* Pods-CourierManagement.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 976D6AF7251DBF56005B7ED9 /* Build configuration list for PBXNativeTarget "CourierManagement" */;
 			buildPhases = (
+				BA85A5C517A4A94CE5FE01C8 /* [CP] Check Pods Manifest.lock */,
 				976D6ADF251DBF55005B7ED9 /* Sources */,
 				976D6AE0251DBF55005B7ED9 /* Frameworks */,
 				976D6AE1251DBF55005B7ED9 /* Resources */,
+				0C3DF9C20C7202EA60F262F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +131,7 @@
 				TargetAttributes = {
 					976D6AE2251DBF55005B7ED9 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -128,10 +161,53 @@
 				976D6AF3251DBF56005B7ED9 /* LaunchScreen.storyboard in Resources */,
 				976D6AF0251DBF56005B7ED9 /* Assets.xcassets in Resources */,
 				976D6AEE251DBF55005B7ED9 /* Main.storyboard in Resources */,
+				976D6AFE251DD9D2005B7ED9 /* ZCAppInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C3DF9C20C7202EA60F262F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourierManagement/Pods-CourierManagement-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourierManagement/Pods-CourierManagement-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourierManagement/Pods-CourierManagement-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA85A5C517A4A94CE5FE01C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CourierManagement-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		976D6ADF251DBF55005B7ED9 /* Sources */ = {
@@ -282,8 +358,10 @@
 		};
 		976D6AF8251DBF56005B7ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0AF3ECE46E7559AFED4B6C8 /* Pods-CourierManagement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5N6T4GFYK;
 				INFOPLIST_FILE = CourierManagement/Info.plist;
@@ -293,6 +371,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = karankarthic.CourierManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CourierManagement/CourierManagement-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,8 +380,10 @@
 		};
 		976D6AF9251DBF56005B7ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF9757BC614081CC75FF6B16 /* Pods-CourierManagement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5N6T4GFYK;
 				INFOPLIST_FILE = CourierManagement/Info.plist;
@@ -311,6 +393,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = karankarthic.CourierManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CourierManagement/CourierManagement-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

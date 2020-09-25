@@ -1,0 +1,6 @@
+framework module Pods_CourierManagement {
+  umbrella header "Pods-CourierManagement-umbrella.h"
+
+  export *
+  module * { export * }
+}
