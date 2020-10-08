@@ -9,5 +9,6 @@ target 'CourierManagement' do
 
 	pod 'ZohoAuth'
         pod 'ZCCoreFramework'
+	pod 'ZCUIFramework'
 
 end

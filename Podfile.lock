@@ -1,4 +1,6 @@
 PODS:
+  - CropViewController (2.5.5)
+  - EasyTipView (2.0.4)
   - PhoneNumberKit (3.1.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.1.0)
     - PhoneNumberKit/UIKit (= 3.1.0)
@@ -15,6 +17,7 @@ PODS:
   - SQLite.Wrapper (0.0.20):
     - PromisesSwift (~> 1.2.8)
   - SwiftSoup (2.2.0)
+  - ZBarSDK (1.3.1)
   - ZCCoreFramework (0.0.29):
     - PhoneNumberKit (= 3.1)
     - PromisesSwift (= 1.2.8)
@@ -23,15 +26,23 @@ PODS:
     - SQLite.Wrapper (= 0.0.20)
     - SwiftSoup (= 2.2.0)
     - ZMLKit (= 0.0.21)
+  - ZCUIFramework (0.0.21):
+    - CropViewController
+    - EasyTipView
+    - ZBarSDK
+    - ZCCoreFramework (= 0.0.29)
   - ZMLKit (0.0.21)
   - ZohoAuth (1.3)
 
 DEPENDENCIES:
   - ZCCoreFramework
+  - ZCUIFramework
   - ZohoAuth
 
 SPEC REPOS:
   trunk:
+    - CropViewController
+    - EasyTipView
     - PhoneNumberKit
     - PromisesObjC
     - PromisesSwift
@@ -39,11 +50,15 @@ SPEC REPOS:
     - SQLite.swift
     - SQLite.Wrapper
     - SwiftSoup
+    - ZBarSDK
     - ZCCoreFramework
+    - ZCUIFramework
     - ZMLKit
     - ZohoAuth
 
 SPEC CHECKSUMS:
+  CropViewController: bd3ff11eeeaadc1e267bb9c3f3e9ee67a52d3285
+  EasyTipView: 4f8beae0a82db2ca4a9b5fd658785fc5f61d296b
   PhoneNumberKit: adffe4e128af1918386e09e7421d3d851a2987af
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
@@ -51,10 +66,12 @@ SPEC CHECKSUMS:
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SQLite.Wrapper: c4b3c2aae7014b660086e7f2aec0837c0c22f333
   SwiftSoup: 230991361c5ba249d140161860a3864a28b63860
+  ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZCCoreFramework: 88ad6b77e5b37d4930347e3c71577fe1afa79e84
+  ZCUIFramework: 442a4f7b2dadc9d9b94f79401ab2c24a47417105
   ZMLKit: 88f2488dcb7f4e29f41abdaa7c7a2327701b491b
   ZohoAuth: e197f454c4ee6d05d1e7396cf2a5a766ec6c4ab6
 
-PODFILE CHECKSUM: 79ed6850daed00ae76b24dd88b45967db6cf2ef0
+PODFILE CHECKSUM: 928d7595f8de9122738955db9674ed3edb167f8b
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
