@@ -37,6 +37,7 @@ extension MainCollectionViewController{
             (error) in
             if error == nil {
                 //Logout Successfully
+                LoginHandler.shared.logOut()
             }
             else {
                 //Error Occurred

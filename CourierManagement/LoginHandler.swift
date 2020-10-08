@@ -31,6 +31,12 @@ class LoginHandler {
         ZohoAuth.initWithClientID(clientID, clientSecret: clientSecret, scope: scope, urlScheme: urlScheme, mainWindow: window, accountsURL: accountsUrl)
     }
     
+    func logOut(){
+        guard let window = self.window else { return }
+        
+        window.rootViewController = ViewController()
+    }
+    
     func login(){
         ZohoAuth.getOauth2Token {
             (token, error) in
@@ -75,19 +81,21 @@ class LoginHandler {
     
    private func setUpViewcontroller() -> UIViewController{
             
-        let mainVc = MainCollectionViewController()
+    let mainVc = MainCollectionViewController()
+    
+    var components:[Component] = []
         ZCAPIService.fetchSectionList(for: application) { (result) in
             switch result
             {
             case .success(let sectionlist):
-                let components = self.getComponents(sectionlist.sections)
-                mainVc.tiles = components
-            
+                components = self.getComponents(sectionlist.sections)
+                
             case .failure(_):
                 print("error")
-                mainVc.tiles = []
+                components = []
             }
          }
+        mainVc.tiles = components
         let navVc = UINavigationController(rootViewController: mainVc)
         return navVc
     }
