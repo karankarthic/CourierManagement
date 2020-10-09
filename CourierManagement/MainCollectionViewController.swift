@@ -110,34 +110,9 @@ extension MainCollectionViewController {
             vc = ZCUIService.getViewController(forForm: ComponentDetail.init(componentLinkName: component.componentLinkName))
         case .report:
              vc = ZCUIService.getViewController(forReport: ComponentDetail.init(componentLinkName: component.componentLinkName))
-        case .calendar:
-            return
         case .page:
              vc = ZCUIService.getViewController(forPage: ComponentDetail.init(componentLinkName: component.componentLinkName))
-            
-        case .htmlPage:
-            return
-        case .summary:
-            return
-        case .grid:
-            return
-        case .spreadSheet:
-            return
-        case .pivotChart:
-            return
-        case .pivotTable:
-            return
-        case .map:
-            return
-        case .timeLine:
-            return
-        case .kanban:
-            return
-        case .approvalPending:
-            return
-        case .approvalCompleted:
-            return
-        case .unknown:
+        default:
             return
         }
         
