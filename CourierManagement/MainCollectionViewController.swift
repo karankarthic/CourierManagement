@@ -32,7 +32,7 @@ class MainCollectionViewController: UIViewController {
 
 extension MainCollectionViewController{
     
-    @objc private func logout() {
+    private func logout() {
         ZohoAuth.revokeAccessToken {
             (error) in
             if error == nil {
@@ -44,6 +44,22 @@ extension MainCollectionViewController{
             }
         }
     }
+    
+    @objc private func logOutPermission(){
+        let alert = UIAlertController(title: "Permission", message: "YouNeedToLogOut", preferredStyle: .alert)
+        
+        let logOut = UIAlertAction(title: "yes", style: .default) { _ in
+            self.logout()
+        }
+        
+        let no = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(no)
+        alert.addAction(logOut)
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
@@ -53,7 +69,7 @@ extension MainCollectionViewController {
         self.view.backgroundColor = UIColor.init(red: 34/255, green: 36/255, blue: 38/255, alpha: 1)
         self.navigationController?.navigationBar.topItem?.title = "Courier Management"
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(self.logout))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(self.logOutPermission))
         self.navigationItem.rightBarButtonItem?.tintColor = .black
         
         self.view.addSubview(collectionView)

@@ -17,24 +17,36 @@ class LoginHandler {
     
     var window:UIWindow?
     
+    private var mainVc : MainCollectionViewController?
+    
     private init(){ }
     
     
     func configureCreatorClient(window: UIWindow){
+        
+        self.window = window
+        
+        if ZohoAuth.isUserSignedIn(){
+            self.setUpViewcontroller()
+            
+        }else{
+            self.window?.rootViewController = ViewController()
+        }
+        
         let scope = ["ZohoCreator.meta.READ", "ZohoCreator.data.READ", "ZohoCreator.meta.CREATE", "ZohoCreator.data.CREATE", "aaaserver.profile.READ", "ZohoContacts.userphoto.READ", "ZohoContacts.contactapi.READ"]
         let clientID = "1000.S45UAZ5HE09NQU6A9CPKIY3JDNAT0Z"
         let clientSecret = "72ac3839c8b8c0af6dbe60b4f220d1752de8b52d76"
         let urlScheme = "couriermanagement://"
         let accountsUrl = "https://accounts.zoho.com" // enter the accounts URL of your respective DC. For eg: EU users use 'https://accounts.zoho.eu'.
         
-        self.window = window
         ZohoAuth.initWithClientID(clientID, clientSecret: clientSecret, scope: scope, urlScheme: urlScheme, mainWindow: window, accountsURL: accountsUrl)
     }
     
     func logOut(){
         guard let window = self.window else { return }
-        
-        window.rootViewController = ViewController()
+        DispatchQueue.main.async {
+            window.rootViewController = ViewController()
+        }
     }
     
     func login(){
@@ -50,9 +62,7 @@ class LoginHandler {
                 // Ensure to use the following line of code in your iOS app before you utilize any of Creator SDK’s methods
                 Creator.configure(delegate: self)
                 
-                guard let window = self.window else { return }
-                
-                window.rootViewController = self.setUpViewcontroller()
+                self.setUpViewcontroller()
                 
             }
         }
@@ -67,37 +77,47 @@ class LoginHandler {
                 // success login
                 // Ensure to use the following line of code in your iOS app before you utilize any of Creator SDK’s methods
                 Creator.configure(delegate: self)
+                self.setUpViewcontroller()
+                
+            }
+            
+            if error != nil{
                 guard let window = self.window else { return }
                 
-                window.rootViewController = self.setUpViewcontroller()
-                
-            }else{
-                return
+                guard let vc = window.rootViewController as? ViewController else{return}
+                DispatchQueue.main.async {
+                    vc.circularView.alpha = 0
+                }
             }
         })
         
         
     }
     
-   private func setUpViewcontroller() -> UIViewController{
+   private func setUpViewcontroller(){
             
-    let mainVc = MainCollectionViewController()
-    
-    var components:[Component] = []
+        mainVc = MainCollectionViewController()
         ZCAPIService.fetchSectionList(for: application) { (result) in
             switch result
             {
             case .success(let sectionlist):
-                components = self.getComponents(sectionlist.sections)
+                let components = self.getComponents(sectionlist.sections)
+                self.mainVc?.tiles = components
                 
+               
             case .failure(_):
                 print("error")
-                components = []
+                self.mainVc?.tiles = []
+                
             }
+            guard let mainVc = self.mainVc else{return}
+            DispatchQueue.main.async {
+                let navVc = UINavigationController(rootViewController: mainVc)
+                self.window?.rootViewController = navVc
+            }
+             
          }
-        mainVc.tiles = components
-        let navVc = UINavigationController(rootViewController: mainVc)
-        return navVc
+       
     }
     
     private func getComponents(_ sections:[Section])->[Component]{
