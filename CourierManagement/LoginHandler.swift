@@ -25,14 +25,7 @@ class LoginHandler {
     func configureCreatorClient(window: UIWindow){
         
         self.window = window
-        
-        if ZohoAuth.isUserSignedIn(){
-            self.setUpViewcontroller()
-            
-        }else{
-            self.window?.rootViewController = ViewController()
-        }
-        
+    
         let scope = ["ZohoCreator.meta.READ", "ZohoCreator.data.READ", "ZohoCreator.meta.CREATE", "ZohoCreator.data.CREATE", "aaaserver.profile.READ", "ZohoContacts.userphoto.READ", "ZohoContacts.contactapi.READ"]
         let clientID = "1000.S45UAZ5HE09NQU6A9CPKIY3JDNAT0Z"
         let clientSecret = "72ac3839c8b8c0af6dbe60b4f220d1752de8b52d76"
@@ -40,6 +33,26 @@ class LoginHandler {
         let accountsUrl = "https://accounts.zoho.com" // enter the accounts URL of your respective DC. For eg: EU users use 'https://accounts.zoho.eu'.
         
         ZohoAuth.initWithClientID(clientID, clientSecret: clientSecret, scope: scope, urlScheme: urlScheme, mainWindow: window, accountsURL: accountsUrl)
+        
+        if ZohoAuth.isUserSignedIn(){
+            
+            Creator.configure(delegate: self)
+            
+            guard let window = self.window else { return }
+            
+            guard let vc = window.rootViewController as? ViewController else{return}
+            DispatchQueue.main.async {
+                vc.loginButton.alpha = 0
+                vc.circularView.alpha = 1
+                vc.circularView.progressAnimation(duration: 5)
+            }
+            
+            self.setUpViewcontroller()
+            
+        }else{
+            self.window?.rootViewController = ViewController()
+        }
+               
     }
     
     func logOut(){
@@ -96,7 +109,8 @@ class LoginHandler {
     
    private func setUpViewcontroller(){
             
-        mainVc = MainCollectionViewController()
+        self.mainVc = MainCollectionViewController()
+    
         ZCAPIService.fetchSectionList(for: application) { (result) in
             switch result
             {
